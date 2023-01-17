@@ -33,15 +33,14 @@
     </head>
     <body>
         <div align="center">
-            <h1>Winwheel.js example wheel - wheel of fortune</h1>
-            <p>Here is an example of a code-drawn Wheel of Fortune looking wheel which spins to a stop with the prize won alerted to the user.</p>
+            <h1>BONKwheel.Sol</h1>
+            <p>Spin the Degen BONK Wheel</p>
             <br />
             <p>
-                With some additional coding it could be made so that the prize won is added to a total after each spin rather than
-                just alerting the prize to make a proper wheel of fortune like game.
+                
             </p>
             <br />
-            <p>Choose a power setting then press the Spin button. You will be alerted to the prize won when the spinning stops.</p>
+            <p>Choose a power setting then press the Spin button. You will be alerted with the prize won when the spinning stops.</p>
             <br />
             <table cellpadding="0" cellspacing="0" border="0">
             <tr>
@@ -92,7 +91,7 @@
                    {'fillStyle' : '#f6989d', 'text' : '600'},
                    {'fillStyle' : '#00aef0', 'text' : '750'},
                    {'fillStyle' : '#f26522', 'text' : '500'},
-                   {'fillStyle' : '#000000', 'text' : 'BANKRUPT', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+                   {'fillStyle' : '#000000', 'text' : 'BURNED', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
                    {'fillStyle' : '#e70697', 'text' : '3000'},
                    {'fillStyle' : '#fff200', 'text' : '600'},
                    {'fillStyle' : '#f6989d', 'text' : '700'},
@@ -106,11 +105,11 @@
                    {'fillStyle' : '#f6989d', 'text' : '500'},
                    {'fillStyle' : '#f26522', 'text' : '400'},
                    {'fillStyle' : '#3cb878', 'text' : '900'},
-                   {'fillStyle' : '#000000', 'text' : 'BANKRUPT', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
+                   {'fillStyle' : '#000000', 'text' : 'BURNED', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'},
                    {'fillStyle' : '#a186be', 'text' : '600'},
                    {'fillStyle' : '#fff200', 'text' : '700'},
                    {'fillStyle' : '#00aef0', 'text' : '800'},
-                   {'fillStyle' : '#ffffff', 'text' : 'LOOSE TURN', 'textFontSize' : 12}
+                   {'fillStyle' : '#000000', 'text' : 'BURNED', 'textFontSize' : 16, 'textFillStyle' : '#ffffff'}
                 ],
                 'animation' :           // Specify the animation to use.
                 {
@@ -131,6 +130,7 @@
 
             // Loads the tick audio sound in to an audio object.
             let audio = new Audio('tick.mp3');
+            let audioEnd = new Audio('bonk-sound-effect.mp3');
 
             // This function is called when the sound is to be played.
             function playSound()
@@ -141,6 +141,17 @@
 
                 // Play the sound.
                 audio.play();
+            }
+
+            // This function is called when the ENDING Sound is to be played.
+            function playEndSound()
+            {
+                // Stop and rewind the sound if it already happens to be playing.
+                audioEnd.pause();
+                audioEnd.currentTime = 0;
+
+                // Play the sound.
+                audioEnd.play();
             }
 
             // Vars used by the code in this page to do power controls.
@@ -234,12 +245,12 @@
             {
                 // Just alert to the user what happened.
                 // In a real project probably want to do something more interesting than this with the result.
-                if (indicatedSegment.text == 'LOOSE TURN') {
-                    alert('Sorry but you loose a turn.');
-                } else if (indicatedSegment.text == 'BANKRUPT') {
-                    alert('Oh no, you have gone BANKRUPT!');
+                if (indicatedSegment.text == 'BURNED') {
+                    alert('YOUR BONKS ARE BURNED!');
+                } else if (indicatedSegment.text == 'BURNED') {
+                    alert('YOUR BONKS ARE BURNED!');
                 } else {
-                    alert("You have won " + indicatedSegment.text);
+                    alert("You have won " + indicatedSegment.text + " BONK Tokens!");
                 }
             }
         </script>
